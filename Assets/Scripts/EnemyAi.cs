@@ -68,7 +68,7 @@ public class EnemyAi : MonoBehaviour
         if (walkPointset)
         {
             Agent.SetDestination(walkpoint);
-
+        }
             Vector3 distanceToWalkPoint = transform.position - walkpoint;
 
             if (distanceToWalkPoint.magnitude < 1f)
@@ -76,7 +76,8 @@ public class EnemyAi : MonoBehaviour
                 yield return new WaitForSeconds(3);
                 walkPointset = false;
             }
-        }
+            
+        
     }
     private void ChasePlayer()
     {
@@ -87,13 +88,15 @@ public class EnemyAi : MonoBehaviour
 
     private void AttackPlayer()
     {
-        Agent.SetDestination(transform.position);
-        Vector3 lookPosition = Player.position;
+        if (Agent.enabled == true) {
+            Agent.SetDestination(transform.position);
+        }
+            Vector3 lookPosition = Player.position;
         lookPosition.y = transform.position.y; // Keep the AI's y-axis unchanged
         transform.LookAt(lookPosition);
         if (!alreadyAttacked)
         {
-            StartCoroutine(Knockback(-transform.forward, 20f, 1f)); // Knockback for 0.2 seconds
+            //StartCoroutine(Knockback(-transform.forward, 05f, 0f)); // Knockback for 0.2 seconds
 
 
             Rigidbody rb = Instantiate(Projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
@@ -151,12 +154,15 @@ public class EnemyAi : MonoBehaviour
     // }
     private IEnumerator Knockback(Vector3 direction, float force, float duration)
     {
+
         Agent.enabled = false; // Disable NavMeshAgent
-        Rigidbody rb = GetComponent<Rigidbody>();
-        rb.AddForce(direction * force, ForceMode.Impulse);
+        Rigidbody rabbit = GetComponent<Rigidbody>();
+        rabbit.AddForce(direction * force, ForceMode.Impulse);
         yield return new WaitForSeconds(duration);
-        rb.linearVelocity = Vector3.zero; // Stop movement after knockback
+        rabbit.linearVelocity = Vector3.zero; // Stop movement after knockback
         Agent.enabled = true; // Re-enable NavMeshAgent
+        print(force);
+        print(direction);
     }
 }
 
