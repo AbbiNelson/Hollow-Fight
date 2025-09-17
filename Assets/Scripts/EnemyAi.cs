@@ -18,7 +18,7 @@ public class EnemyAi : MonoBehaviour
     public bool IsRunning;
     public float fullSpeed;
     public float walkSpeed;
-   
+
 
     //patrol
     public Vector3 walkpoint;
@@ -35,7 +35,7 @@ public class EnemyAi : MonoBehaviour
 
     private void Update()
     {
-      //  animator.SetBool("IsRunning", IsRunning);
+        //  animator.SetBool("IsRunning", IsRunning);
         ////check for sight and attack range
         PlayerInSightRange = Physics.CheckSphere(transform.position, sightRange, WhatIsPlayer);
         PlayerInAttackRange = Physics.CheckSphere(transform.position, attackRange, WhatIsPlayer);
@@ -55,9 +55,9 @@ public class EnemyAi : MonoBehaviour
     }
     private void Awake()
     {
-       // Player = GameObject.Find("PlayerOBJ").transform;
+        // Player = GameObject.Find("PlayerOBJ").transform;
         Agent = GetComponent<NavMeshAgent>();
-        
+
     }
 
     private IEnumerator Patroling()
@@ -93,8 +93,8 @@ public class EnemyAi : MonoBehaviour
         transform.LookAt(lookPosition);
         if (!alreadyAttacked)
         {
-            Agent.isStopped = true;
-            Agent.Move(-transform.forward * 2f); // Knockback: move back but keep facing player
+            StartCoroutine(Knockback(-transform.forward, 20f, 1f)); // Knockback for 0.2 seconds
+
 
             Rigidbody rb = Instantiate(Projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
             rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
@@ -136,7 +136,7 @@ public class EnemyAi : MonoBehaviour
         float randomZ = Random.Range(-walkpointRange, walkpointRange);
         float randomX = Random.Range(-walkpointRange, walkpointRange);
 
-        walkpoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z );//randomZ
+        walkpoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z);//randomZ
         if (Physics.Raycast(walkpoint, -transform.up, 3f, WhatIsGround))
         {
             Agent.speed = walkSpeed;
@@ -145,9 +145,18 @@ public class EnemyAi : MonoBehaviour
         }
 
     }
-   // private void OnCollisionEnter(Collision collision)
-  //  {
-      //  SearchWalkPoint();
-   // }
+    // private void OnCollisionEnter(Collision collision)
+    //  {
+    //  SearchWalkPoint();
+    // }
+    private IEnumerator Knockback(Vector3 direction, float force, float duration)
+    {
+        Agent.enabled = false; // Disable NavMeshAgent
+        Rigidbody rb = GetComponent<Rigidbody>();
+        rb.AddForce(direction * force, ForceMode.Impulse);
+        yield return new WaitForSeconds(duration);
+        rb.linearVelocity = Vector3.zero; // Stop movement after knockback
+        Agent.enabled = true; // Re-enable NavMeshAgent
+    }
 }
 
