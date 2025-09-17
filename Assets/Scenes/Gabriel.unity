@@ -252,7 +252,7 @@ GameObject:
   - component: {fileID: 417637264}
   - component: {fileID: 417637263}
   - component: {fileID: 417637262}
-  m_Layer: 3
+  m_Layer: 26
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -361,7 +361,7 @@ GameObject:
   - component: {fileID: 1155723007}
   - component: {fileID: 1155723006}
   - component: {fileID: 1155723005}
-  m_Layer: 6
+  m_Layer: 28
   m_Name: PlayerOBJ
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -758,10 +758,10 @@ MonoBehaviour:
   Player: {fileID: 1155723008}
   WhatIsGround:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 67108864
   WhatIsPlayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 268435456
   Projectile: {fileID: 2860355365612622417, guid: 0ce66a5eb28819d47b8416674f841361, type: 3}
   health: 10
   IsRunning: 0
