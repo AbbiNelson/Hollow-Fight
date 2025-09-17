@@ -770,7 +770,7 @@ GameObject:
   - component: {fileID: 1537161335}
   - component: {fileID: 1537161337}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1273,7 +1273,7 @@ MonoBehaviour:
   wallLayer:
     serializedVersion: 2
     m_Bits: 64
-  EditorVisual: 1
+  EditorVisual: 0
   dustParticles: {fileID: 1981945587}
   checkDistance: 2
   sideOffset: 0.5
