@@ -93,14 +93,16 @@ public class EnemyAi : MonoBehaviour
         transform.LookAt(lookPosition);
         if (!alreadyAttacked)
         {
-            Agent.Move(-transform.forward * 1);
+            Agent.isStopped = true;
+            Agent.Move(-transform.forward * 2f); // Knockback: move back but keep facing player
+
             Rigidbody rb = Instantiate(Projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
             rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
             rb.AddForce(transform.up * 8f, ForceMode.Impulse);
             //GetComponent<Rigidbody>().AddForce(-transform.forward * 10f, ForceMode.Impulse); //linearVelocity= -transform.forward * 2f;
 
             alreadyAttacked = true;
-            
+            Agent.isStopped = false;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
 
         }
