@@ -53,6 +53,7 @@ public class EnemyAi : MonoBehaviour
         {
             AttackPlayer();
         }
+        
     }
     private void Awake()
     {
