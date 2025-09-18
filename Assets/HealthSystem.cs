@@ -2,7 +2,7 @@ using UnityEngine;
 
 public interface IDamageable
 {
-    void TakeDamage(int damage);
+    void TakeDamage(int damage, Transform enemyTransform);
 }
 
 public class HealthSystem : MonoBehaviour
@@ -10,7 +10,7 @@ public class HealthSystem : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
     public bool AI = false;
-    float knockbackForce = 5f;
+    public float knockbackForceMulti = 2f;
 
     public Vector3 knockbackVelocity;
 
@@ -25,7 +25,14 @@ public class HealthSystem : MonoBehaviour
 
     public void TakeDamage(int damage, Transform enemyTrasnform)
     {
-        Vector3 dir = enemyTrasnform.position - transform.position;
+        float healthPercent = (float)currentHealth / maxHealth;
+        float damageFactor = (float)damage / maxHealth;
+
+        // Knockback gets stronger the lower the health percent, and scales with damage dealt
+        float power = knockbackForceMulti * damage * (1f + (1f - healthPercent)) * (0.5f + damageFactor);
+
+        print(power);
+        Vector3 dir = (transform.position - enemyTrasnform.position).normalized;
 
         print("Direction: " + dir);
         print("Enemy Transform: " + enemyTrasnform.position);
@@ -39,7 +46,7 @@ public class HealthSystem : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        ApplyKnockback(dir);
+        ApplyKnockback(dir, power);
 
         //EnemyFlashOnHit flash = GetComponent<EnemyFlashOnHit>();
         //if (flash != null)
@@ -49,13 +56,13 @@ public class HealthSystem : MonoBehaviour
 
     }
 
-    public void ApplyKnockback(Vector3 direction)
+    public void ApplyKnockback(Vector3 direction, float power)
     {
         if (rb == null) return;
         direction.y = 0; // prevent upward knockback
-        rb.linearVelocity = direction.normalized * knockbackForce;
+        rb.linearVelocity = Vector3.zero;
 
-        this.knockbackVelocity = direction.normalized * knockbackForce;
+        rb.AddForce(direction * power, ForceMode.Impulse);
     }
 
     public void Knockback()
@@ -73,15 +80,15 @@ public class HealthSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        while(knockbackVelocity != Vector3.zero)
-        {
-            knockbackVelocity = Vector3.Lerp(knockbackVelocity, Vector3.zero, 1 * Time.deltaTime);
-            if (knockbackVelocity.magnitude < 0.1f)
-            {
-                knockbackVelocity = Vector3.zero;
-            }
-            return;
-        }
+        //while(knockbackVelocity != Vector3.zero)
+        //{
+        //    knockbackVelocity = Vector3.Lerp(knockbackVelocity, Vector3.zero, 1 * Time.deltaTime);
+        //    if (knockbackVelocity.magnitude < 0.1f)
+        //    {
+        //        knockbackVelocity = Vector3.zero;
+        //    }
+        //    return;
+        //}
 
         if (Input.GetKeyDown(KeyCode.K))
         {

@@ -1326,6 +1326,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   AI: 0
+  knockbackForceMulti: 10
   knockbackVelocity: {x: 0, y: 0, z: 0}
 --- !u!1 &1981945585
 GameObject:
