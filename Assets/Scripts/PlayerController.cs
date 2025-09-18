@@ -26,6 +26,9 @@ public class PlayerController : MonoBehaviour
     // cache emission for performance
     private ParticleSystem.EmissionModule dustEmission;
 
+    public HealthSystem healthSystem;
+    public Transform EnemyTest;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -80,6 +83,7 @@ public class PlayerController : MonoBehaviour
         if (ctx.phase == InputActionPhase.Performed)
         {
             print("Attack");
+            healthSystem.TakeDamage(10, EnemyTest);
         }
     }
 
@@ -171,7 +175,7 @@ public class PlayerController : MonoBehaviour
         {
             if (WallCheck())
             {
-                print("works1");
+                //print("works1");
                 jumpCount = maxJumpCount;
 
                 //if (_movement.x > 0)
