@@ -285,7 +285,7 @@ GameObject:
   - component: {fileID: 368797014}
   - component: {fileID: 368797013}
   - component: {fileID: 368797017}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Cube (4)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -407,7 +407,7 @@ GameObject:
   - component: {fileID: 1015935810}
   - component: {fileID: 1015935809}
   - component: {fileID: 1015935813}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Cube (2)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -650,7 +650,7 @@ GameObject:
   - component: {fileID: 1392533524}
   - component: {fileID: 1392533523}
   - component: {fileID: 1392533527}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Cube (3)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -859,7 +859,7 @@ GameObject:
   - component: {fileID: 1959958748}
   - component: {fileID: 1959958747}
   - component: {fileID: 1959958751}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Cube (1)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1269,10 +1269,10 @@ MonoBehaviour:
   maxJumpCount: 2
   groundLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 67108864
   wallLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 128
   EditorVisual: 0
   dustParticles: {fileID: 1981945587}
   checkDistance: 2
