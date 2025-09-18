@@ -9,8 +9,8 @@ public class CameraControllor : MonoBehaviour
     public Transform playerTransform;
 
     [HideInInspector]
-    public int worldSize;
-    private float orthoSize;
+    //public int worldSize;
+    //private float orthoSize;
 
     //public void Spawn(Vector3 pos)
     //{
