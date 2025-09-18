@@ -18,6 +18,7 @@ public class EnemyAi : MonoBehaviour
     public bool IsRunning;
     public float fullSpeed;
     public float walkSpeed;
+    private bool patrol;
 
 
     //patrol

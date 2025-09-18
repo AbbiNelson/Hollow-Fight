@@ -512,83 +512,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78396926cbbfc4ac3b48fc5fc34a87d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  data:
-    dataString: UEsDBBQAAAgIAACAn+tqVmCccwIAAC8FAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVMFy2jAQ/RVG54axMQbTW+sQ0kMSJrSTiy9CWmMNsuSR5ADJ8O+VZIEdcsK8fft23+7an4gJ3QAxUq0Uo0+SAvo5Qu4Z/Rj1wUc44p0UG/YBF84bo6ZyJOw5r9gwafHYpWlZg1GM/BI77siRBVvBSqnqJd1BLrXRFi4x12BDShqXLSz0OULHkHAKvx/ud3S2TwSEAdWz4ngcZ4tsOl8EejyeJ7MkikPWXTwZZ9l0kSapz28F4bhugDofA5lLtbgrI6zDwHBKRHLOdGgPmVPj7ee40a01ZwmUYWvXNxaPEwtUwHaV8X9nk6HCS1lqMEFX4dM9U3Z0nTT6Lbt51ljvu+beMW/h6r5TffoWnc3jKMtmU08qlawfr+Uj58xUjOxf8YlgbQZDH8L3Awd+TgfM93jL4a0C8SxXSraC2qBRrUttNUzuB1JXf3kFZN/zuo5vwLb5vua4X/PZT+CYc1ZvHTKedsCGSz/4hcsBZVf0xzbsz0YHJYu6Jv5p+It3w/sKgQemtLGhUFC47rayVY6Kln5mzkxrcqkEeDj03IDA3JzWVsYM1xh9jw3K3kQesHuTQvEQu7wgNyke7vlRdBNay8N1WbqShyfQ1UtrOBPQN+0Cz3ZOuRSiuzL9NeiyNq0qMRlk7VpGv94XInSbzSezxZbAPE2T+V1Kk22C07SMsjLZkhnyp8eEtYn5uuszTMcuTfTiwp7Z5fsyWinc+IOnCh9W7KOWg/6YKOWGKADx0ilcJqRB2SL27aRLyux8NmAME37d6LNAXJI90OIqVHiny6NRuOhVCtSwd2kcUqDcf1UK5ODrJa8VvDM4uOIXsTM6/wdQSwMEFAAACAgAAICf61VesG5tAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTXUVBKL0osyCgGihiCOKWZKSB2tFJySpKFuZGZZVJyqrmpqbG5rmmKcZJxoqlpmoFFmnFSsplSLFB9SWVBql9ibipET0BiSUZaZl5KZl66nntRZoo7yGil2FoAUEsBAi0AFAAACAgAAICf62pWYJxzAgAALwUAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAAICf61VesG5tAAAAeAAAAAkAJAAAAAAAAAAAAAAAwAIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAAB4AwAAAAA=
-    upgradeData: []
-    file_cachedStartup: {fileID: 0}
-    data_cachedStartup: []
-    cacheStartup: 0
-    graphStructureLocked: []
-  showNavGraphs: 1
-  showUnwalkableNodes: 1
-  debugMode: 0
-  debugFloor: 0
-  debugRoof: 1
-  manualDebugFloorRoof: 0
-  showSearchTree: 0
-  unwalkableNodeDebugSize: 0.3
-  logPathResults: 1
-  maxNearestNodeDistance: 100
-  scanOnStartup: 1
-  fullGetNearestSearch: 0
-  prioritizeGraphs: 0
-  prioritizeGraphsLimit: 1
-  colorSettings:
-    _SolidColor:
-      r: 0.11764706
-      g: 0.4
-      b: 0.7882353
-      a: 0.9
-    _UnwalkableNode:
-      r: 1
-      g: 0
-      b: 0
-      a: 0.5
-    _BoundsHandles:
-      r: 0.29
-      g: 0.454
-      b: 0.741
-      a: 0.9
-    _ConnectionLowLerp:
-      r: 0
-      g: 1
-      b: 0
-      a: 0.5
-    _ConnectionHighLerp:
-      r: 1
-      g: 0
-      b: 0
-      a: 0.5
-    _MeshEdgeColor:
-      r: 0
-      g: 0
-      b: 0
-      a: 0.5
-    _AreaColors:
-    - r: 0
-      g: 0
-      b: 0
-      a: 0
-  tagNames: []
-  heuristic: 2
-  heuristicScale: 1
-  threadCount: 1
-  maxFrameTime: 10
-  batchGraphUpdates: 0
-  graphUpdateBatchingInterval: 0.2
-  <lastScanTime>k__BackingField: 0
-  inGameDebugPath: 
-  graphUpdateRoutineRunning: 0
-  graphUpdatesWorkItemAdded: 0
-  lastGraphUpdate: -9999
-  euclideanEmbedding:
-    mode: 0
-    seed: 0
-    pivotPointRoot: {fileID: 0}
-    spreadOutCount: 1
-  showGraphs: 1
-  nextFreePathID: 1
 --- !u!4 &684683677
 Transform:
   m_ObjectHideFlags: 0
@@ -617,8 +540,8 @@ GameObject:
   - component: {fileID: 704708083}
   - component: {fileID: 704708082}
   - component: {fileID: 704708081}
-  - component: {fileID: 704708086}
   - component: {fileID: 704708087}
+  - component: {fileID: 704708088}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -742,28 +665,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &704708086
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 704708080}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78a8da4caabfa04458c17cf76a0f470d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pointA: {fileID: 1705296185}
-  pointB: {fileID: 1654125627}
-  waitTime: 2
-  patrolSpeed: 3.5
-  dashSpeed: 20
-  dashDuration: 0.2
-  dashDelay: 1
-  detectionAngle: 90
-  detectionDistance: 10
-  player: {fileID: 1155723008}
 --- !u!195 &704708087
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -786,6 +687,28 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &704708088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 704708080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78a8da4caabfa04458c17cf76a0f470d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointA: {fileID: 1705296185}
+  pointB: {fileID: 1654125627}
+  waitTime: 2
+  patrolSpeed: 3.5
+  dashSpeed: 20
+  dashDuration: 0.2
+  dashDelay: 1
+  detectionAngle: 90
+  detectionDistance: 10
+  player: {fileID: 1155723008}
 --- !u!1 &1155723004
 GameObject:
   m_ObjectHideFlags: 0
@@ -1381,58 +1304,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6eb1402c17e84a9282a7f0f62eb584f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 5
-  radius: 0.5
-  height: 2
-  canMove: 1
-  maxSpeed: 1
-  gravity: {x: NaN, y: NaN, z: NaN}
-  groundMask:
-    m_Bits: 4294967295
-  centerOffsetCompatibility: NaN
-  repathRateCompatibility: NaN
-  canSearchCompability: 0
-  orientation: 1
-  enableRotation: 1
-  simulatedPosition: {x: 0, y: 0, z: 0}
-  simulatedRotation: {x: 0, y: 0, z: 0, w: 0}
-  accumulatedMovementDelta: {x: 0, y: 0, z: 0}
-  velocity2D: {x: 0, y: 0}
-  verticalVelocity: 0
-  seeker: {fileID: 0}
-  tr: {fileID: 0}
-  rigid: {fileID: 0}
-  rigid2D: {fileID: 0}
-  controller: {fileID: 0}
-  autoRepath:
-    mode: 2
-    interval: 0.5
-    sensitivity: 10
-    maximumInterval: 2
-    visualizeSensitivity: 0
-    lastDestination: {x: Infinity, y: Infinity, z: Infinity}
-    lastRepathTime: -Infinity
-  <usingGravity>k__BackingField: 0
-  lastDeltaTime: 0
-  prevFrame: 0
-  prevPosition1: {x: 0, y: 0, z: 0}
-  prevPosition2: {x: 0, y: 0, z: 0}
-  lastDeltaPosition: {x: 0, y: 0}
-  waitingForPathCalculation: 0
-  targetCompatibility: {fileID: 0}
-  startHasRun: 0
-  <destination>k__BackingField: {x: Infinity, y: Infinity, z: Infinity}
-  <isStopped>k__BackingField: 0
-  maxAcceleration: -2.5
-  rotationSpeed: 360
-  slowdownDistance: 0.6
-  pickNextWaypointDist: 2
-  endReachedDistance: 0.2
-  alwaysDrawGizmos: 0
-  slowWhenNotFacingTarget: 1
-  whenCloseToDestination: 0
-  constrainInsideGraph: 0
-  <reachedEndOfPath>k__BackingField: 0
 --- !u!114 &2112953615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1445,23 +1316,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 1
-  drawGizmos: 1
-  detailedGizmos: 0
-  startEndModifier:
-    addPoints: 0
-    exactStartPoint: 3
-    exactEndPoint: 3
-    useRaycasting: 0
-    mask:
-      m_Bits: 4294967295
-    useGraphRaycasting: 0
-  traversableTags: -1
-  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  graphMask:
-    value: -1
-  graphMaskCompatibility: -1
-  lastPathID: 0
 --- !u!61 &2112953616
 BoxCollider2D:
   m_ObjectHideFlags: 0

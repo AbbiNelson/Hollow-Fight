@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class DashOnPlayerDetect : MonoBehaviour
+public class RunAI : MonoBehaviour
 {
     public Transform pointA;
     public Transform pointB;
@@ -31,7 +31,7 @@ public class DashOnPlayerDetect : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
-      //  player = GameObject.FindGameObjectWithTag("Player")?.transform;
+        //  player = GameObject.FindGameObjectWithTag("Player")?.transform;
 
         currentTarget = pointA;
         agent.speed = patrolSpeed;
