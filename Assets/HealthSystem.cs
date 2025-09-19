@@ -10,7 +10,7 @@ public class HealthSystem : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
     public bool AI = false;
-    public float knockbackForceMulti = 2f;
+    public float knockbackForceMulti = 10f;
 
     public Vector3 knockbackVelocity;
 
@@ -80,7 +80,7 @@ public class HealthSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //while(knockbackVelocity != Vector3.zero)
+        //while (knockbackVelocity != Vector3.zero)
         //{
         //    knockbackVelocity = Vector3.Lerp(knockbackVelocity, Vector3.zero, 1 * Time.deltaTime);
         //    if (knockbackVelocity.magnitude < 0.1f)
@@ -89,6 +89,15 @@ public class HealthSystem : MonoBehaviour
         //    }
         //    return;
         //}
+
+        if (knockbackVelocity != Vector3.zero)
+        {
+            knockbackVelocity = knockbackVelocity * (10 - Time.deltaTime);
+            if (knockbackVelocity.magnitude < 0.1f)
+            {
+                knockbackVelocity = Vector3.zero;
+            }
+        }
 
         if (Input.GetKeyDown(KeyCode.K))
         {

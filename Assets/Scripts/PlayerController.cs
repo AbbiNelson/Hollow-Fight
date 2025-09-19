@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
     public HealthSystem healthSystem;
     public Transform EnemyTest;
 
+    public CameraControllor cameraControllor;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -66,6 +68,7 @@ public class PlayerController : MonoBehaviour
             {
                 rb.linearVelocity = new Vector3(rb.linearVelocity.x, playerJumpForce, rb.linearVelocity.z);
                 jumpCount = 1;
+                cameraControllor.JumpZoom();
 
                 // burst on jump
                 CreateDustBurst();
@@ -74,6 +77,7 @@ public class PlayerController : MonoBehaviour
             {
                 rb.linearVelocity = new Vector3(rb.linearVelocity.x, playerJumpForce, rb.linearVelocity.z);
                 jumpCount++;
+                cameraControllor.JumpZoom();
             }
         }
     }
