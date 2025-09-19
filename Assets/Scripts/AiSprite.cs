@@ -35,11 +35,11 @@ public class AiSprite : MonoBehaviour
     {
         if (newtransform.x > originaltransform.x) //|| input.magnitude < -0.1f)
         {
-            transform.localRotation = new Quaternion(0, 0, 30, 0);
+            transform.localRotation = Quaternion.Euler(0, 180, 0);
         }
         if (newtransform.x < originaltransform.x) //|| input.magnitude > 0.1f)
         {
-            transform.localRotation = new Quaternion(0,0,-30,0);
+            transform.localRotation = Quaternion.Euler(0,0,0);
         }
     }
 
