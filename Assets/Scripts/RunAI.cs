@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
 public class RunAI : MonoBehaviour
 {
@@ -62,7 +63,7 @@ public class RunAI : MonoBehaviour
         float distance = Vector3.Distance(flatPosition, flatTarget);
 
         // If agent is close to target point, start waiting before next patrol move
-        if (distance < 1f)
+        if (distance < 10f)
         {
             StartCoroutine(WaitAtPoint());
         }
