@@ -139,6 +139,13 @@ public class RunAI : MonoBehaviour
         return false;
     }
 
+    private void OnCollisionStay(Collision collision)
+    {
+        print("Colliding with: " + collision.transform.name);
 
-
+        if (collision.transform.CompareTag("Player"))
+        {
+            
+        }
+    }
 }
