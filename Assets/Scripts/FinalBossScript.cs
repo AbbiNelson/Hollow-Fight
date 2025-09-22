@@ -8,6 +8,12 @@ public class FinalBossScript : MonoBehaviour
     public float rotationSpeed = 5.0f;
     public float stoppingDistance = 3.0f;
 
+    // Public function to return a random float between min and max
+    public float GetRandomFloat(float min, float max)
+    {
+        return Random.Range(min, max);
+    }
+
     void Update()
     {
         if (player == null)
@@ -35,6 +41,12 @@ public class FinalBossScript : MonoBehaviour
     private void Attack()
     {
         Debug.Log("Final Boss Attack!");
+        // Example usage: attack only if random float is greater than 2
+        if (GetRandomFloat(1f, 3f) == 1f)
+        {
+            // Attack logic here
+            Debug.Log("Random float triggered attack!");
+        }
     }
 }
 
