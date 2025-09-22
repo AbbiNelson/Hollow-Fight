@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     public Transform EnemyTest;
 
     public CameraControllor cameraControllor;
+    public Transform enemyAttacked;
 
     void Start()
     {
@@ -87,7 +88,10 @@ public class PlayerController : MonoBehaviour
         if (ctx.phase == InputActionPhase.Performed)
         {
             print("Attack");
-            healthSystem.TakeDamage(10, EnemyTest);
+            if (enemyAttacked != null)
+            {
+                enemyAttacked.transform.GetComponent<HealthSystem>().TakeDamage(10, transform);
+            }
         }
     }
 
@@ -113,6 +117,8 @@ public class PlayerController : MonoBehaviour
             // disable dust in air
             dustEmission.rateOverTime = 0;
         }
+
+        transform.GetChild(2).GetComponent<Animator>().SetFloat("Walking", Mathf.Abs(_movement.x));
     }
 
     private Color lastGroundColor = Color.white;

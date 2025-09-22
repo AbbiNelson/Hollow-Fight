@@ -476,7 +476,7 @@ GameObject:
   - component: {fileID: 464239816}
   m_Layer: 0
   m_Name: aiEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -664,7 +664,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   AI: 1
-  knockbackForceMulti: 2
+  knockbackForceMulti: 5
   knockbackVelocity: {x: 0, y: 0, z: 0}
 --- !u!1 &645329921
 GameObject:
@@ -951,6 +951,7 @@ GameObject:
   - component: {fileID: 1314937029}
   - component: {fileID: 1314937031}
   - component: {fileID: 1314937030}
+  - component: {fileID: 1314937032}
   m_Layer: 0
   m_Name: Sword_0
   m_TagString: Untagged
@@ -966,13 +967,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1314937028}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.544, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0.42425892, w: 0.90554094}
+  m_LocalPosition: {x: 0.5, y: 0.12, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1964556564}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -50.208}
 --- !u!136 &1314937030
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -992,10 +993,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.98
-  m_Height: 6.72
+  m_Radius: 1.9977134
+  m_Height: 9.542766
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: -1.017718, y: 1.4113816, z: 0}
 --- !u!212 &1314937031
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1051,6 +1052,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1314937032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1314937028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69440297a23484949a45b16ab35858e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerController: {fileID: 1964556573}
 --- !u!1 &1392533522
 GameObject:
   m_ObjectHideFlags: 0
@@ -1528,7 +1542,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1981945588}
-  - {fileID: 2142519652}
   - {fileID: 1314937029}
   - {fileID: 1885463547}
   m_Father: {fileID: 0}
@@ -1805,6 +1818,7 @@ MonoBehaviour:
   healthSystem: {fileID: 1964556574}
   EnemyTest: {fileID: 645329922}
   cameraControllor: {fileID: 140188362}
+  enemyAttacked: {fileID: 0}
   checkDistance: 2
   sideOffset: 0.5
 --- !u!114 &1964556574
@@ -6657,61 +6671,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1964556564}
   m_LocalEulerAnglesHint: {x: -47.613, y: -90, z: 90}
---- !u!1 &2142519651
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2142519652}
-  - component: {fileID: 2142519653}
-  m_Layer: 0
-  m_Name: SwordColider
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2142519652
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2142519651}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.64, y: 1.63, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1964556564}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &2142519653
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2142519651}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.2
-  m_Height: 2.25
-  m_Direction: 1
-  m_Center: {x: 0, y: -1.216469, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

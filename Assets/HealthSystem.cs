@@ -65,17 +65,17 @@ public class HealthSystem : MonoBehaviour
         rb.AddForce(direction * power, ForceMode.Impulse);
     }
 
-    public void Knockback()
-    {
-        if (knockbackVelocity != Vector3.zero)
-        {
-            knockbackVelocity = knockbackVelocity * (10 - Time.deltaTime);
-            if (knockbackVelocity.magnitude < 0.1f)
-            {
-                knockbackVelocity = Vector3.zero;
-            }
-        }
-    }
+    //public void Knockback()
+    //{
+    //    if (knockbackVelocity != Vector3.zero)
+    //    {
+    //        knockbackVelocity = knockbackVelocity * (10 - Time.deltaTime);
+    //        if (knockbackVelocity.magnitude < 0.1f)
+    //        {
+    //            knockbackVelocity = Vector3.zero;
+    //        }
+    //    }
+    //}
 
     // Update is called once per frame
     void Update()
