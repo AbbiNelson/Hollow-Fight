@@ -23,6 +23,11 @@ public class FinalBossScript : MonoBehaviour
     private bool dashReady = true;
     private Vector3 dashDirection;
 
+    [Header("canon")]
+    public GameObject Projectile;
+    public float timeBetweenAttacks;
+    bool alreadyAttacked;
+
     // Public function to return a random float between min and max
     public float GetRandomFloat(float min, float max)
     {
@@ -32,7 +37,9 @@ public class FinalBossScript : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
-    }
+        rb.constraints = RigidbodyConstraints.FreezePosition; // Fix: use constraints instead of freezePosition
+    
+}
     void Update()
     {
         if (player == null)
@@ -47,21 +54,29 @@ public class FinalBossScript : MonoBehaviour
 
         if (distance > stoppingDistance)
         {
+            agent.isStopped = false;
             // Rotate smoothly towards the player.
             Quaternion targetRotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
-
+            rb.constraints = RigidbodyConstraints.FreezePosition;
             // Move towards the player.
             transform.position += direction.normalized * moveSpeed * Time.deltaTime;
         }
         else
         {
+            
             // Placeholder for attack behavior.
             if (Time.time >= nextAttackTime)
             {
+                rb.constraints = RigidbodyConstraints.FreezePosition;
+                // Before setting agent.isStopped, check if agent is active and on a NavMesh
+                if (agent != null && agent.enabled && agent.isOnNavMesh)
+                {
+                    agent.isStopped = true;
+                }
                 Attack();
                 // Schedule next attack between 2 and 4 seconds from now
-                nextAttackTime = Time.time + GetRandomFloat(2f, 4f);
+                nextAttackTime = Time.time + GetRandomFloat(0.5f, 0.6f);
             }
            
         }
@@ -77,9 +92,14 @@ public class FinalBossScript : MonoBehaviour
         // Example usage: attack only if random float is greater than 2
         if (GetRandomFloat(0f, 3f) > 1f && GetRandomFloat(0f, 3f) < 2)
         {
+            
             if (PlayerInFront() && dashReady)
             {
+
+                rb.constraints = RigidbodyConstraints.None;
+                //agent.isStopped = false;
                 StartCoroutine(PrepareAndDash());
+
             }
             // Attack logic here
             Debug.Log("Random float triggered attack!");
@@ -88,10 +108,37 @@ public class FinalBossScript : MonoBehaviour
         if (GetRandomFloat(0f, 3f) > 2f && GetRandomFloat(0f, 3f) < 3)
         {
 
+            rb.constraints = RigidbodyConstraints.None;
+            agent.isStopped = false;
+
+            // Instantiate and shoot a laser at the player
+            if (Projectile != null && player != null)
+            {
+                Vector3 spawnPos = transform.position + transform.forward * 2f; // In front of boss
+                Quaternion spawnRot = Quaternion.LookRotation(player.position - transform.position);
+                GameObject laser = Instantiate(Projectile, spawnPos, spawnRot);
+
+                Rigidbody laserRb = laser.GetComponent<Rigidbody>();
+                if (laserRb != null)
+                {
+                    laserRb.AddForce((player.position - transform.position).normalized * 50f, ForceMode.Impulse);
+                }
+            }
+
+            rb.constraints = RigidbodyConstraints.FreezePosition;
         }
         if (GetRandomFloat(0f, 3f) > 0f && GetRandomFloat(0f, 3f) < 1) 
-        { 
-       
+        {
+            Debug.Log("triggered!");
+
+            // Unfreeze for jump
+            rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
+            // Jump
+            rb.AddForce(Vector3.up * 1000f, ForceMode.Impulse);
+
+            // Wait for jump to finish, then dash twice
+            StartCoroutine(JumpAndDoubleDash());
+            rb.constraints = RigidbodyConstraints.FreezePosition;
         }
     }
     System.Collections.IEnumerator PrepareAndDash()
@@ -115,14 +162,27 @@ public class FinalBossScript : MonoBehaviour
         rb.linearVelocity = Vector3.zero;
         isDashing = false;
         agent.enabled = true;
+        agent.isStopped = true;
 
         // Force patrol to resume cleanly
-        
 
-
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
+        rb.constraints = RigidbodyConstraints.None;
         // Cooldown before another dash can happen
         yield return new WaitForSeconds(2f); // cooldown
         dashReady = true;
+    }
+    private System.Collections.IEnumerator JumpAndDoubleDash()
+    {
+        // Wait for jump to reach peak (adjust time as needed)
+        yield return new WaitForSeconds(0.5f);
+
+        for (int i = 0; i < 2; i++)
+        {
+            yield return StartCoroutine(PrepareAndDash());
+            // Optional: wait between dashes
+            yield return new WaitForSeconds(0.2f);
+        }
     }
     bool PlayerInFront()
     {
@@ -146,5 +206,6 @@ public class FinalBossScript : MonoBehaviour
         }
 
     }
+   
 }
 

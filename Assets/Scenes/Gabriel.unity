@@ -748,10 +748,12 @@ MonoBehaviour:
   rotationSpeed: 5
   stoppingDistance: 4
   dashSpeed: 20
-  dashDuration: 0.2
-  dashDelay: 1
+  dashDuration: 0.5
+  dashDelay: 0.1
   detectionAngle: 360
   detectionDistance: 20
+  Projectile: {fileID: 2860355365612622417, guid: 0ce66a5eb28819d47b8416674f841361, type: 3}
+  timeBetweenAttacks: 0
 --- !u!195 &948009339
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -888,7 +890,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 14
   m_CollisionDetection: 0
 --- !u!1 &1155723004
 GameObject:
@@ -992,7 +994,7 @@ Transform:
   m_GameObject: {fileID: 1155723004}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -26.91, y: 2.29, z: -11.22}
+  m_LocalPosition: {x: -14.9, y: 2.29, z: -11.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1013,7 +1015,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1183781857
 Transform:
   m_ObjectHideFlags: 0
@@ -1355,7 +1357,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &2029489007
 BoxCollider:
   m_ObjectHideFlags: 0
