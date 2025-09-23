@@ -1,5 +1,6 @@
 using UnityEngine;
-using System.Collections;   
+using System.Collections;
+using UnityEngine.UI;
 public interface IDamageable
 {
     void TakeDamage(int damage, Transform enemyTransform);
@@ -22,6 +23,7 @@ public class HealthSystem : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        HealthCanvas = transform.Find("Canvas").gameObject;
         currentHealth = maxHealth;
     }
 
@@ -114,6 +116,7 @@ public class HealthSystem : MonoBehaviour
             TakeDamage(10, transform);
         }
 
+        HealthCanvas.transform.GetChild(0).gameObject.GetComponent<Slider>().value = currentHealth;
     }
  
 
