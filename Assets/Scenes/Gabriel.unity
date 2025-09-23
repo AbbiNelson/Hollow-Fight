@@ -723,6 +723,7 @@ GameObject:
   - component: {fileID: 948009340}
   - component: {fileID: 948009339}
   - component: {fileID: 948009338}
+  - component: {fileID: 948009344}
   m_Layer: 0
   m_Name: BigBoss
   m_TagString: Untagged
@@ -745,7 +746,12 @@ MonoBehaviour:
   player: {fileID: 1155723008}
   moveSpeed: 2
   rotationSpeed: 5
-  stoppingDistance: 6
+  stoppingDistance: 4
+  dashSpeed: 20
+  dashDuration: 0.2
+  dashDelay: 1
+  detectionAngle: 360
+  detectionDistance: 20
 --- !u!195 &948009339
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -857,6 +863,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &948009344
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 948009337}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1155723004
 GameObject:
   m_ObjectHideFlags: 0
@@ -1536,7 +1569,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.060000002
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 502a74a3e417db64f81a88c53277990b, type: 2}
   m_BuildHeightMesh: 0
