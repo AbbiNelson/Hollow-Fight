@@ -96,6 +96,22 @@ public class PlayerController : MonoBehaviour
             if (enemyAttacked != null)
             {
                 enemyAttacked.transform.GetComponent<HealthSystem>().TakeDamage(10, transform);
+                if (healthSystem != null)
+                {
+                    healthSystem.currentHealth = Mathf.Min(healthSystem.currentHealth + 5, healthSystem.maxHealth);
+                    Debug.Log("Player restored 5 HP!");
+                }
+            }
+
+            // Destroy enemy bullets in attack range
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, 3); // Adjust radius as needed
+            foreach (var hitCollider in hitColliders)
+            {
+                if (hitCollider.CompareTag("EnemyBullet"))
+                {
+                    Destroy(hitCollider.gameObject);
+                    Debug.Log("Destroyed an enemy bullet!");
+                }
             }
         }
     }
@@ -241,6 +257,7 @@ public class PlayerController : MonoBehaviour
 
     void OnDrawGizmos()
     {
+        Gizmos.DrawWireSphere(transform.position, 3);
         if (EditorVisual)
         {
             if (groundChecker == null)

@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System.Collections;   
 public interface IDamageable
 {
     void TakeDamage(int damage, Transform enemyTransform);
@@ -65,6 +65,14 @@ public class HealthSystem : MonoBehaviour
         rb.linearVelocity = Vector3.zero;
 
         rb.AddForce(direction * power, ForceMode.Impulse);
+        //  rb.linearVelocity = direction.normalized * reducedPower;
+        if (AI)
+        {
+            StartCoroutine(FreezeRigidbodyAfterKnockback());
+        }
+        
+
+
     }
 
     //public void Knockback()
@@ -104,6 +112,22 @@ public class HealthSystem : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.K))
         {
             TakeDamage(10, transform);
+        }
+
+    }
+ 
+
+    
+
+    private IEnumerator FreezeRigidbodyAfterKnockback()
+    {
+        yield return new WaitForSeconds(0.25f);
+
+        if (rb != null)
+        {
+            rb.constraints = RigidbodyConstraints.FreezePosition;
+            yield return null; // freeze for one frame
+            rb.constraints = RigidbodyConstraints.None;
         }
     }
 }
