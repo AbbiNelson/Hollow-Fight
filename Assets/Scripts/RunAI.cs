@@ -145,7 +145,7 @@ public class RunAI : MonoBehaviour
 
         if (collision.transform.CompareTag("Player"))
         {
-            
+            player.transform.GetComponent<HealthSystem>().TakeDamage(10 , this.transform);
         }
     }
 }
