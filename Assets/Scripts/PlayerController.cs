@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -88,11 +89,21 @@ public class PlayerController : MonoBehaviour
         if (ctx.phase == InputActionPhase.Performed)
         {
             print("Attack");
+
+            transform.GetChild(1).GetComponent<Animator>().SetBool("Attacking", true);
+            StartCoroutine(StopAttack());
+
             if (enemyAttacked != null)
             {
                 enemyAttacked.transform.GetComponent<HealthSystem>().TakeDamage(10, transform);
             }
         }
+    }
+
+    public IEnumerator StopAttack()
+    {
+        yield return new WaitForSeconds(0.25f);
+        transform.GetChild(1).GetComponent<Animator>().SetBool("Attacking", false);
     }
 
     void FixedUpdate()
@@ -118,7 +129,7 @@ public class PlayerController : MonoBehaviour
             dustEmission.rateOverTime = 0;
         }
 
-        transform.GetChild(2).GetComponent<Animator>().SetFloat("Walking", Mathf.Abs(_movement.x));
+        transform.GetChild(1).GetComponent<Animator>().SetFloat("Walking", Mathf.Abs(_movement.x));
     }
 
     private Color lastGroundColor = Color.white;
