@@ -22,6 +22,7 @@ public class FinalBossScript : MonoBehaviour
     private bool isDashing = false;
     private bool dashReady = true;
     private Vector3 dashDirection;
+    public float postionTolerance;
 
     [Header("canon")]
     public GameObject Projectile;
@@ -46,39 +47,41 @@ public class FinalBossScript : MonoBehaviour
             return;
 
        // if (isDashing) return;
-      
+      postionTolerance = Vector3.Distance(this.transform.position, player.position);
 
 
         Vector3 direction = player.position - transform.position;
         float distance = direction.magnitude;
-
-        if (distance > stoppingDistance)
+        if (postionTolerance <= 20)
         {
-            agent.isStopped = false;
-            // Rotate smoothly towards the player.
-            Quaternion targetRotation = Quaternion.LookRotation(direction);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
-            rb.constraints = RigidbodyConstraints.FreezePosition;
-            // Move towards the player.
-            transform.position += direction.normalized * moveSpeed * Time.deltaTime;
-        }
-        else
-        {
-            
-            // Placeholder for attack behavior.
-            if (Time.time >= nextAttackTime)
+            if (distance > stoppingDistance)
             {
+                agent.isStopped = false;
+                // Rotate smoothly towards the player.
+                Quaternion targetRotation = Quaternion.LookRotation(direction);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
                 rb.constraints = RigidbodyConstraints.FreezePosition;
-                // Before setting agent.isStopped, check if agent is active and on a NavMesh
-                if (agent != null && agent.enabled && agent.isOnNavMesh)
-                {
-                    agent.isStopped = true;
-                }
-                Attack();
-                // Schedule next attack between 2 and 4 seconds from now
-                nextAttackTime = Time.time + GetRandomFloat(0.1f, 0.2f);
+                // Move towards the player.
+                transform.position += direction.normalized * moveSpeed * Time.deltaTime;
             }
-           
+            else
+            {
+
+                // Placeholder for attack behavior.
+                if (Time.time >= nextAttackTime)
+                {
+                    rb.constraints = RigidbodyConstraints.FreezePosition;
+                    // Before setting agent.isStopped, check if agent is active and on a NavMesh
+                    if (agent != null && agent.enabled && agent.isOnNavMesh)
+                    {
+                        agent.isStopped = true;
+                    }
+                    Attack();
+                    // Schedule next attack between 2 and 4 seconds from now
+                    nextAttackTime = Time.time + GetRandomFloat(0.8f, 1f);
+                }
+
+            }
         }
     }
 
