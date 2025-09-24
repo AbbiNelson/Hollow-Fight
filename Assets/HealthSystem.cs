@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public interface IDamageable
 {
     void TakeDamage(int damage, Transform enemyTransform);
@@ -46,9 +47,16 @@ public class HealthSystem : MonoBehaviour
         print($"{gameObject.name} took {damage} damage. HP: {currentHealth}");
         if (currentHealth <= 0)
         {
-            print(rb.transform.name + " died.");
-            Destroy(gameObject);
-            return;
+            if (this.AI == true)
+            {
+                print(rb.transform.name + " died.");
+                Destroy(gameObject);
+                return;
+            }
+            else
+            {
+                SceneManager.LoadScene("Abigail - Main Menu");
+            }
         }
         ApplyKnockback(dir, power);
 
@@ -109,11 +117,6 @@ public class HealthSystem : MonoBehaviour
             {
                 knockbackVelocity = Vector3.zero;
             }
-        }
-
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            TakeDamage(10, transform);
         }
 
         HealthCanvas.transform.GetChild(0).gameObject.GetComponent<Slider>().value = currentHealth;

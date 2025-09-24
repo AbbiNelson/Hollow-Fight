@@ -64,14 +64,32 @@ public class PlayerController : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext ctx)
     {
+        //if (ctx.phase == InputActionPhase.Performed)
+        //{
+        //    if (IsGrounded(true))
+        //    {
+        //        rb.linearVelocity = new Vector3(rb.linearVelocity.x, playerJumpForce, rb.linearVelocity.z);
+        //        jumpCount = 1;
+        //        cameraControllor.JumpZoom();
+
+        //        // burst on jump
+        //        CreateDustBurst();
+        //    }
+        //    else if (jumpCount < maxJumpCount)
+        //    {
+        //        rb.linearVelocity = new Vector3(rb.linearVelocity.x, playerJumpForce, rb.linearVelocity.z);
+        //        jumpCount++;
+        //        cameraControllor.JumpZoom();
+        //    }
+        //}
+
         if (ctx.phase == InputActionPhase.Performed)
         {
-            if (IsGrounded(true))
+            if (IsGrounded(false))
             {
                 rb.linearVelocity = new Vector3(rb.linearVelocity.x, playerJumpForce, rb.linearVelocity.z);
                 jumpCount = 1;
                 cameraControllor.JumpZoom();
-
                 // burst on jump
                 CreateDustBurst();
             }
@@ -98,9 +116,9 @@ public class PlayerController : MonoBehaviour
                 enemyAttacked.transform.GetComponent<HealthSystem>().TakeDamage(10, transform);
                 if (healthSystem != null)
                 {
-                    healthSystem.currentHealth = Mathf.Min(healthSystem.currentHealth + 5, healthSystem.maxHealth);
-                    Debug.Log("Player restored 5 HP!");
+                    healthSystem.currentHealth = Mathf.Min(healthSystem.currentHealth + UnityEngine.Random.Range(4, 7), healthSystem.maxHealth);
                 }
+                enemyAttacked = null;
             }
 
             // Destroy enemy bullets in attack range
@@ -133,15 +151,13 @@ public class PlayerController : MonoBehaviour
 
         bool grounded = IsGrounded(false);
 
-        if (grounded || WallCheck() || !WallCheck())
+        if (grounded)
         {
-            // dynamically scale dust based on speed
             float speedFactor = Mathf.Abs(_movement.x * playerSpeed);
-            dustEmission.rateOverTime = speedFactor * 2.5f; // tweak multiplier (5) for effect
+            dustEmission.rateOverTime = speedFactor * 2.5f;
         }
         else
         {
-            // disable dust in air
             dustEmission.rateOverTime = 0;
         }
 
@@ -206,33 +222,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        bool grounded = IsGrounded(false);
-
-        if (grounded == false)
-        {
-            if (WallCheck())
-            {
-                //print("works1");
-                jumpCount = maxJumpCount;
-
-                //if (_movement.x > 0)
-                //    transform.localScale = new Vector3(-1, 1, 1);
-                //else if (_movement.x < 0)
-                //    transform.localScale = new Vector3(1, 1, 1);
-
-                return;
-            }
-            //else if (!WallCheck())
-            //{
-            //    print("works2");
-            //    if (_movement.x > 0)
-            //        transform.localScale = new Vector3(-1, 1, 1);
-            //    else if (_movement.x < 0)
-            //        transform.localScale = new Vector3(1, 1, 1);
-
-            //    return;
-            //}
-        }
+        bool grounded = IsGrounded(true);
 
         if (grounded && !wasGroundedLastFrame)
         {
