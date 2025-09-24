@@ -76,7 +76,7 @@ public class FinalBossScript : MonoBehaviour
                 }
                 Attack();
                 // Schedule next attack between 2 and 4 seconds from now
-                nextAttackTime = Time.time + GetRandomFloat(0.5f, 0.6f);
+                nextAttackTime = Time.time + GetRandomFloat(0.1f, 0.2f);
             }
            
         }
@@ -93,7 +93,7 @@ public class FinalBossScript : MonoBehaviour
         if (GetRandomFloat(0f, 3f) > 1f && GetRandomFloat(0f, 3f) < 2)
         {
             
-            if (PlayerInFront() && dashReady)
+            if ( dashReady)
             {
 
                 rb.constraints = RigidbodyConstraints.None;
