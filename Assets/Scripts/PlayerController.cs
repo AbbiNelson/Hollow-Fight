@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -162,6 +163,9 @@ public class PlayerController : MonoBehaviour
         }
 
         transform.GetChild(1).GetComponent<Animator>().SetFloat("Walking", Mathf.Abs(_movement.x));
+        if (this.gameObject.transform.position.y <= -10) {
+            SceneManager.LoadScene("Abigail - Main Menu");
+        }
     }
 
     private Color lastGroundColor = Color.white;
