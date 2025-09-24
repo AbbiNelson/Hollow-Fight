@@ -27,12 +27,9 @@ public class AiSprite : MonoBehaviour
         //{
         //    transform.localScale = new Vector3(-1, 1, 1);
         //}
-        if (healthSystem.currentHealth == 0)
-        {
-            Destroy(this.gameObject);
-        }
+      if (enemyTransform == null) { Destroy(gameObject); }
 
-     originaltransform = enemyTransform.transform.position;
+        originaltransform = enemyTransform.transform.position;
         
         transform.position = enemyTransform.transform.position;
     }

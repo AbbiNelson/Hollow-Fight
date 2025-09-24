@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class sword : MonoBehaviour
+public class Sword : MonoBehaviour
 {
     public PlayerController playerController;
 
@@ -15,5 +15,10 @@ public class sword : MonoBehaviour
         {
             playerController.enemyAttacked = null;
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        playerController.enemyAttacked = null;
     }
 }
