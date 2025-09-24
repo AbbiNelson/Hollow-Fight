@@ -6,6 +6,7 @@ public class AiSprite : MonoBehaviour
     public Vector3 originaltransform;
     public Vector3 newtransform;
     public Transform sprite;
+    HealthSystem healthSystem;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -26,8 +27,9 @@ public class AiSprite : MonoBehaviour
         //{
         //    transform.localScale = new Vector3(-1, 1, 1);
         //}
+      if (enemyTransform == null) { Destroy(gameObject); }
 
-     originaltransform = enemyTransform.transform.position;
+        originaltransform = enemyTransform.transform.position;
         
         transform.position = enemyTransform.transform.position;
     }
